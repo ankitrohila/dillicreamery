@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Force HTTPS when behind Railway's reverse proxy
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
+
         // Order placed → send WhatsApp confirmation + invoice
         Event::listen(
             \App\Events\OrderPlaced::class,

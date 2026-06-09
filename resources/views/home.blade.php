@@ -358,7 +358,7 @@
             @endforeach
         </div>
         <div class="text-center mt-8">
-            <a href="{{ route('shop') }}" class="btn-primary px-8 py-3">Shop Now →</a>
+            <a href="{{ route('shop.index') }}" class="btn-primary px-8 py-3">Shop Now →</a>
         </div>
     </div>
 </div>

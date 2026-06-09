@@ -46,11 +46,10 @@
 
                     {{-- Ghee product image --}}
                     <div class="relative z-10 flex items-center justify-center" style="min-height:380px;">
-                        <img src="{{ asset('images/ghee-hero.png') }}"
+                        <img src="{{ asset('images/gallery/ghee-1.jpg') }}"
                              alt="Dilli Creamery Premium A2 Desi Ghee"
-                             class="w-72 lg:w-96 object-contain mx-auto"
-                             style="filter:drop-shadow(0 30px 60px rgba(201,168,76,.35));"
-                             onerror="this.src='{{ asset('images/cow-ghee.png') }}'">
+                             class="w-72 lg:w-96 object-cover rounded-3xl mx-auto"
+                             style="filter:drop-shadow(0 30px 60px rgba(201,168,76,.35));max-height:420px;">
                     </div>
 
                     {{-- Floating badges --}}
@@ -119,11 +118,10 @@
 
                     {{-- Product photo --}}
                     <div class="relative z-10">
-                        <img src="{{ asset('images/cow-ghee.png') }}"
+                        <img src="{{ asset('images/gallery/ghee-4.jpg') }}"
                              alt="Dilli Creamery Premium Danedar Cow Ghee 900g"
-                             class="w-72 lg:w-80 object-contain mx-auto"
-                             style="filter:drop-shadow(0 25px 55px rgba(201,168,76,.3));"
-                             onerror="this.src='{{ asset('images/ghee-hero.png') }}'">
+                             class="w-72 lg:w-80 object-cover rounded-3xl mx-auto"
+                             style="filter:drop-shadow(0 25px 55px rgba(201,168,76,.3));max-height:380px;">
                         {{-- Spinning badge --}}
                         <div class="absolute -top-4 -right-4 z-20 w-20 h-20 rounded-full flex flex-col items-center justify-center text-center shadow-lg"
                              style="background:#C9A84C;animation:badgeSpin 14s linear infinite;">
@@ -328,6 +326,39 @@
                     @endforeach
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+{{-- REAL PHOTO GALLERY --}}
+<div class="py-20" style="background:#fffbef;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <div class="section-tag justify-center mb-4">📸 From Our Dairy</div>
+            <h2 class="section-heading">Real Ghee. <span class="gradient-text">Real Purity.</span></h2>
+            <p class="text-gray-500 mt-3 max-w-xl mx-auto">Photos straight from our kitchen — no filters, no staging. Just pure A2 ghee crafted the old way.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            @foreach([
+                ['ghee-1.jpg','Our premium ghee in sunlight','col-span-2 row-span-2'],
+                ['ghee-3.jpg','Fresh ghee jar',''],
+                ['ghee-5.jpg','Ghee texture',''],
+                ['ghee-6.jpg','Ghee pouring',''],
+                ['ghee-7.jpg','Ghee preparation',''],
+                ['ghee-8.jpg','Bilona process',''],
+                ['ghee-9.jpg','Ghee golden color',''],
+                ['ghee-10.jpg','Pure cow ghee',''],
+            ] as [$img, $alt, $span])
+            <div class="overflow-hidden rounded-2xl {{ $span }}" style="aspect-ratio:1;">
+                <img src="{{ asset('images/gallery/'.$img) }}"
+                     alt="{{ $alt }}"
+                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer"
+                     style="height:100%;">
+            </div>
+            @endforeach
+        </div>
+        <div class="text-center mt-8">
+            <a href="{{ route('shop') }}" class="btn-primary px-8 py-3">Shop Now →</a>
         </div>
     </div>
 </div>
